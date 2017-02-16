@@ -68,7 +68,6 @@ io.on('connection', socket => {
     })
   })
   socket.on('edit', event => {
-    console.log(event)
     socket.broadcast.to(event.name).emit('insert', event)
   })
 })
