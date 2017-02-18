@@ -70,4 +70,11 @@ io.on('connection', socket => {
   socket.on('edit', event => {
     socket.broadcast.to(event.name).emit('insert', event)
   })
+  socket.on('count', () => {
+    let num
+    rooms.forEach(value => {
+      if(value.connections) num += value.connections.length 
+    })
+    socket.emit('count', num)
+  })
 })
